@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class BallShooter : MonoBehaviour
+{
+    public Rigidbody ball;
+    public Transform firePosition;
+    public Slider powerSlider;
+    public AudioSource shootingAudio;
+    public AudioClip fireClip;
+    public AudioClip chargingClip;
+    public float miniForce = 15f;
+    public float maxForce = 30f;
+    public float charngingTime = 0.75f;
+
+    private float currentForce;
+    private float chargeSpeed;
+    private bool fired;
+
+    private void OnEnable()
+    {
+        currentForce = miniForce;
+        powerSlider.value = miniForce;
+        fired = false;
+
+    }
+
+    private void Start()
+    {
+        chargeSpeed = (maxForce - miniForce) / charngingTime;
+    }
+
+    private void Update()
+    {
+        if(currentForce >= maxForce && !fired)
+        {
+            //currentForceがmax値になった時
+            currentForce = maxForce;
+        }
+        else if(Input.GetButtonDown("Fire1"))
+        {
+            //Fire1ボタンを一回押した時、currentForceをminiForceに、clipをChargingClipに設定
+            currentForce = miniForce;
+
+            shootingAudio.clip = chargingClip;
+            shootingAudio.Play();
+        }
+        else if(Input.GetButton("Fire1") && !fired)
+        {
+            //Fire1ボタンを押している間、CurrentForceの更新、sliderの更新
+            currentForce += chargeSpeed * Time.deltaTime;
+            powerSlider.value = currentForce;
+        }
+        else if(Input.GetButtonUp("Fire1") && !fired)
+        {
+            //Ball発射
+        }
+    }
+}

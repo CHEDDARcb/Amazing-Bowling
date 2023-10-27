@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShooterRotator : MonoBehaviour
 {
+    //Shooterの状態
     private enum RotateState
     {
         Idle, Vertical, Horizontal, Ready
@@ -24,10 +25,12 @@ public class ShooterRotator : MonoBehaviour
     {
         switch(state)
         {
+            //回転の準備
             case RotateState.Idle:
                 if(Input.GetButtonDown("Fire1"))
                     state = RotateState.Horizontal;
             break;
+            //y軸回転
             case RotateState.Horizontal:
                 if (Input.GetButton("Fire1"))
                 {
@@ -38,6 +41,7 @@ public class ShooterRotator : MonoBehaviour
                     state = RotateState.Vertical;
                 }
             break;
+            //x軸回転
             case RotateState.Vertical:
                 if (Input.GetButton("Fire1"))
                 {
@@ -48,6 +52,7 @@ public class ShooterRotator : MonoBehaviour
                     state = RotateState.Ready;
                 }
             break;
+            //発射準備完了
             case RotateState.Ready:
                 break;
         }
