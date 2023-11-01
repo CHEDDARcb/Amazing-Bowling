@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BallShooter : MonoBehaviour
 {
     public Rigidbody ball;
-    public Transform firePosition;
+    public Transform firePos;
     public Slider powerSlider;
     public AudioSource shootingAudio;
     public AudioClip fireClip;
@@ -34,10 +34,12 @@ public class BallShooter : MonoBehaviour
 
     private void Update()
     {
+        powerSlider.value = miniForce;
         if(currentForce >= maxForce && !fired)
         {
             //currentForceがmax値になった時
             currentForce = maxForce;
+            Fire();
         }
         else if(Input.GetButtonDown("Fire1"))
         {
@@ -55,7 +57,18 @@ public class BallShooter : MonoBehaviour
         }
         else if(Input.GetButtonUp("Fire1") && !fired)
         {
-            //Ball発射
+            Fire();
         }
+    }
+
+    private void Fire()
+    {
+        fired = true;
+        Rigidbody ballInstance =  Instantiate(ball, firePos.position, firePos.rotation);
+        ballInstance.velocity = currentForce * firePos.forward;
+        shootingAudio.clip = fireClip;
+        shootingAudio.Play();
+
+        currentForce = miniForce;
     }
 }

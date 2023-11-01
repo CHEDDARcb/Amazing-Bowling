@@ -776,7 +776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1486380759}
   m_Layer: 0
-  m_Name: FirePosition
+  m_Name: FirePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -993,12 +993,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef65776be67d4ddc91e3951b49238cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
-  firePosition: {fileID: 0}
-  powerSlider: {fileID: 0}
-  shootingAudio: {fileID: 0}
-  fireClip: {fileID: 0}
-  chargingClip: {fileID: 0}
+  ball: {fileID: 5171127872209554942, guid: 62cb9fed3c2764c46a6ae1e9e4016603, type: 3}
+  firePos: {fileID: 1486380759}
+  powerSlider: {fileID: 54233143}
+  shootingAudio: {fileID: 1892080951}
+  fireClip: {fileID: 8300000, guid: 9a0f09a1a65c449288e7b9593b109cbf, type: 3}
+  chargingClip: {fileID: 8300000, guid: bf7c660e4b34144d1a60a5063a3b1f4a, type: 3}
   miniForce: 15
   maxForce: 30
   charngingTime: 0.75
