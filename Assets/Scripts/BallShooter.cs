@@ -34,6 +34,10 @@ public class BallShooter : MonoBehaviour
 
     private void Update()
     {
+        if(fired == true)
+        {
+            return;
+        }
         powerSlider.value = miniForce;
         if(currentForce >= maxForce && !fired)
         {
@@ -43,6 +47,7 @@ public class BallShooter : MonoBehaviour
         }
         else if(Input.GetButtonDown("Fire1"))
         {
+            fired = false; 
             //Fire1ボタンを一回押した時、currentForceをminiForceに、clipをChargingClipに設定
             currentForce = miniForce;
 
