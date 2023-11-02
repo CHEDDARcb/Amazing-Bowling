@@ -9,12 +9,16 @@ public class ShooterRotator : MonoBehaviour
     {
         Idle, Vertical, Horizontal, Ready
     }
-
     private RotateState state;
+
+    //rotationの速度
     public float verticalRotateSpeed;
     public float horizontallRotateSpeed;
+
+    //BallShooterスクリプトを活性化
     public BallShooter ballShooter;
 
+    //回転用audio
     public AudioSource rotationAudio;
     public AudioClip rotationClip;
 
@@ -36,7 +40,7 @@ public class ShooterRotator : MonoBehaviour
                     state = RotateState.Horizontal;
                     rotationAudio.clip = rotationClip;
                 }
-            break;
+                break;
             //y軸回転
             case RotateState.Horizontal:
                 if (Input.GetButton("Fire1"))
@@ -49,7 +53,7 @@ public class ShooterRotator : MonoBehaviour
                     state = RotateState.Vertical;
                     rotationAudio.Stop();
                 }
-            break;
+                break;
             //x軸回転
             case RotateState.Vertical:
                 if (Input.GetButton("Fire1"))
@@ -63,13 +67,15 @@ public class ShooterRotator : MonoBehaviour
                     state = RotateState.Ready;
                     ballShooter.enabled = true;
                 }
-            break;
+                break;
             //発射準備完了
             case RotateState.Ready:
                 break;
         }
     }
 
+    /*再び活性化された時の初期化
+     回転・状態の初期化とBallShooterスクリプトの非活性化*/
     private void OnEnable()
     {
         transform.rotation = Quaternion.identity;
