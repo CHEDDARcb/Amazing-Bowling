@@ -40,7 +40,7 @@ public class SpawnGenerator : MonoBehaviour
 
         float posX = basePosition.x + Random.Range(-size.x / 2f, size.x / 2f);
         float posY = basePosition.y + Random.Range(-size.y / 2f, size.y / 2f);
-        float posZ = basePosition.z + Random.Range(-size.z / 2f, size.y / 2f);
+        float posZ = basePosition.z + Random.Range(-size.z / 2f, size.z / 2f);
 
         return new Vector3(posX, posY, posZ);
     }

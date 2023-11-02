@@ -4852,7 +4852,7 @@ Transform:
   - {fileID: 6712714891981697561}
   - {fileID: 5682883981789963916}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &868389097984658850
 ParticleSystem:
@@ -9755,16 +9755,16 @@ AudioSource:
   m_GameObject: {fileID: 3017842460791864849}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8002121622630467019, guid: 9bf4ccb70934d454b862ed4a45356fe7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9c32617ebf03b4ac3b3f521750435944, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.67
+  m_Volume: 0.425
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 103
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

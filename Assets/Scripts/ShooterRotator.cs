@@ -15,6 +15,9 @@ public class ShooterRotator : MonoBehaviour
     public float horizontallRotateSpeed;
     public BallShooter ballShooter;
 
+    public AudioSource rotationAudio;
+    public AudioClip rotationClip;
+
     private void Start()
     {
         state = RotateState.Idle;
@@ -28,18 +31,23 @@ public class ShooterRotator : MonoBehaviour
         {
             //回転の準備
             case RotateState.Idle:
-                if(Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Fire1"))
+                {
                     state = RotateState.Horizontal;
+                    rotationAudio.clip = rotationClip;
+                }
             break;
             //y軸回転
             case RotateState.Horizontal:
                 if (Input.GetButton("Fire1"))
                 {
                     transform.Rotate(new Vector3(0, horizontallRotateSpeed * Time.deltaTime, 0));
+                    rotationAudio.Play();
                 }
                 else if (Input.GetButtonUp("Fire1"))
                 {
                     state = RotateState.Vertical;
+                    rotationAudio.Stop();
                 }
             break;
             //x軸回転
@@ -47,9 +55,11 @@ public class ShooterRotator : MonoBehaviour
                 if (Input.GetButton("Fire1"))
                 {
                     transform.Rotate(new Vector3(-verticalRotateSpeed * Time.deltaTime, 0, 0));
+                    rotationAudio.Play();
                 }
                 else if (Input.GetButtonUp("Fire1"))
                 {
+                    rotationAudio.Stop();
                     state = RotateState.Ready;
                     ballShooter.enabled = true;
                 }

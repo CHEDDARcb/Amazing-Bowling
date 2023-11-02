@@ -35,8 +35,11 @@ public class Ball : MonoBehaviour
         explosionParticle.Play();
         explosionAudio.Play();
 
+        GameManager.instance.OnBallDestory();
+
         Destroy(explosionParticle.gameObject, explosionParticle.duration);
         Destroy(gameObject);
+
     }
 
     private float CalculateDamage(Vector3 targetPosition)

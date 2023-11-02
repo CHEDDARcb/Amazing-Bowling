@@ -90,7 +90,7 @@ public class CamFollow : MonoBehaviour
 
     /*GameMangerで使う
      targetとstateを変更*/
-    public void SetState(Transform newTarget, State newState)
+    public void SetTarget(Transform newTarget, State newState)
     {
         target = newTarget;
         state = newState;
